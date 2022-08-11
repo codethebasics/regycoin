@@ -1,28 +1,32 @@
 import { Box, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { useState } from 'react'
 import Card from '../../components/card/Card'
 
 export default function index() {
+  const [displayMinas] = useState(true)
+  const [displayRecursos] = useState(true)
+
   return (
     <Box p={5}>
       <Tabs isFitted colorScheme='dark'>
         <TabList>
           <Tab>Moedas</Tab>
           <Tab>Placas</Tab>
-          <Tab>Minas</Tab>
-          <Tab>Recursos</Tab>
+          <Tab display={displayMinas ? 'flex' : 'none'}>Minas</Tab>
+          <Tab display={displayRecursos ? 'flex' : 'none'}>Recursos</Tab>
         </TabList>
         <TabPanels>
           <TabPanel display='flex' flexWrap='wrap'>
             <Card
               image='/img/duckcoin_1.png'
               alt='duckcoin'
-              balance={0}
+              balance={7.5}
               symbol={'DUCK'}
             />
             <Card
               image='/img/regycoin.png'
               alt='duckcoin'
-              balance={0}
+              balance={10}
               symbol={'REGY'}
             />
           </TabPanel>
@@ -96,7 +100,7 @@ export default function index() {
               symbol={'OURO'}
             />
           </TabPanel>
-          <TabPanel>
+          <TabPanel display='flex' flexWrap='wrap'>
             <Card
               image='/img/sand_minerals_icon.png'
               alt='areia'
