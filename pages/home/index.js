@@ -3,17 +3,14 @@ import { useState } from 'react'
 import Card from '../../components/card/Card'
 
 export default function index() {
-  const [displayMinas] = useState(true)
-  const [displayRecursos] = useState(true)
-
   return (
     <Box p={5}>
       <Tabs isFitted colorScheme='dark'>
         <TabList>
           <Tab>Moedas</Tab>
           <Tab>Placas</Tab>
-          <Tab display={displayMinas ? 'flex' : 'none'}>Minas</Tab>
-          <Tab display={displayRecursos ? 'flex' : 'none'}>Recursos</Tab>
+          <Tab>Minas</Tab>
+          <Tab>Recursos</Tab>
         </TabList>
         <TabPanels>
           <TabPanel display='flex' flexWrap='wrap'>
