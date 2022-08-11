@@ -1,11 +1,11 @@
-import { Box, Button } from '@chakra-ui/react'
+import { Flex, Button } from '@chakra-ui/react'
 
 export default function Footer() {
   return (
-    <Box p={5} background='#222' color='#fff'>
-      <Button colorScheme='teal' size='md'>
-        Button
+    <Flex p={5} background='#222' color='#fff' justifyContent='center'>
+      <Button colorScheme='yellow' size='md'>
+        Conectar
       </Button>
-    </Box>
+    </Flex>
   )
 }
