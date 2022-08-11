@@ -1,13 +1,6 @@
-import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react'
+import { Flex, Heading, Text, Image } from '@chakra-ui/react'
 
-export default function Card({
-  image,
-  alt,
-  header,
-  balance,
-  symbol,
-  maxwidth
-}) {
+export default function Card({ image, alt, header, balance, symbol }) {
   return (
     <Flex
       backgroundColor='rgba(0, 0, 0, .6)'
