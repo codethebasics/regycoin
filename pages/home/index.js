@@ -5,7 +5,7 @@ import Card from '../../components/card/Card'
 export default function index() {
   return (
     <Box p={5}>
-      <Tabs isFitted colorScheme='dark'>
+      <Tabs isFitted colorScheme='black'>
         <TabList>
           <Tab>Moedas</Tab>
           <Tab>Placas</Tab>
