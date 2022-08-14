@@ -1,5 +1,4 @@
 import { Box, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import { useState } from 'react'
 import Card from '../../components/card/Card'
 
 export default function index() {
