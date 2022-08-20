@@ -14,7 +14,7 @@ import Card from '../../components/card/Card'
 import * as Web3Service from '../../services/web3.service'
 import { useState, useEffect } from 'react'
 
-export default function index() {
+export default function Index() {
   const [isConnected, setIsConnected] = useState(false)
 
   /**
@@ -187,7 +187,7 @@ export default function index() {
           backgroundColor={'rgba(22, 22, 22, .2)'}
           direction='column'
         >
-          <Image src={'/img/metamask.png'} width={150} />
+          <Image src={'/img/metamask.png'} width={150} alt={'metamask'} />
           <Text
             p={5}
             align={'center'}
