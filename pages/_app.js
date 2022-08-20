@@ -2,7 +2,6 @@ import '../styles/globals.scss'
 
 import Footer from '../components/layout/footer/Footer'
 import Header from '../components/layout/header/Header'
-import { ethers } from 'ethers'
 
 import { Alert, AlertIcon } from '@chakra-ui/react'
 import { ChakraProvider, Flex, Text, Link } from '@chakra-ui/react'
@@ -24,13 +23,7 @@ function MyApp({ Component, pageProps }) {
             <Text fontSize='xs' fontWeight='bold'>
               Please install MetaMask before proceed
             </Text>
-            <Link
-              fontSize='xs'
-              fontWeight='bold'
-              color='dodgerblue'
-              href='https://metamask.io/'
-              isExternal
-            >
+            <Link fontSize='xs' fontWeight='bold' color='dodgerblue' href='https://metamask.io/' isExternal>
               https://metamask.io/
             </Link>
           </Flex>
