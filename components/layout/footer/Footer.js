@@ -1,29 +1,34 @@
-import { Flex, Text, Button } from '@chakra-ui/react'
-import { ethers } from 'ethers'
+import { Flex, Button } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
+import * as Web3Service from '../../../services/web3.service'
 
 export default function Footer() {
-  const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false)
-  const [connectedWallet, setConnectedWallet] = useState('')
+  const [address, setAddress] = useState('')
 
+  /**
+   *
+   */
   useEffect(() => {
-    setIsMetaMaskInstalled(!!window.ethereum)
-    setConnectedWallet(window?.ethereum?.selectedAddress)
-  }, [])
-
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        await provider.send('eth_requestAccounts', [])
-        const signer = provider.getSigner()
-        setConnectedWallet(await signer.getAddress())
-      } catch (e) {
-        console.log(e)
+    const fetchWeb3Info = async () => {
+      if (window.ethereum) {
+        setAddress(await Web3Service.getConnectedAddress())
+        Web3Service.listenNetworkChange()
       }
     }
+    fetchWeb3Info()
+  }, [])
+
+  /**
+   *
+   */
+  const connectWallet = async () => {
+    const _address = await Web3Service.connect()
+    setAddress(_address[0])
   }
 
+  /**
+   *
+   */
   const shortenWalletAddress = address => {
     return `${address.substring(0, 4)}...${address.substring(
       address.length - 4,
@@ -31,14 +36,13 @@ export default function Footer() {
     )}`
   }
 
+  /**
+   *
+   */
   return (
     <Flex p={5} background='#222' color='#fff' justifyContent='center'>
-      <Button
-        colorScheme='yellow'
-        disabled={!isMetaMaskInstalled}
-        onClick={connectWallet}
-      >
-        {connectedWallet ? shortenWalletAddress(connectedWallet) : 'Connect'}
+      <Button colorScheme='yellow' onClick={connectWallet}>
+        {address ? shortenWalletAddress(address) : 'Connect'}
       </Button>
     </Flex>
   )
