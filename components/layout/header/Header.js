@@ -23,23 +23,32 @@ export default function Header() {
    *
    */
   const connectWallet = async () => {
-    const _address = await Web3Service.connect()
-    setAddress(_address[0])
+    await Web3Service.connect()
+    window.location.reload()
   }
 
   /**
    *
    */
   const shortenWalletAddress = address => {
-    return `${address.substring(0, 4)}...${address.substring(address.length - 4, address.length)}`
+    return `${address.substring(0, 4)}...${address.substring(
+      address.length - 4,
+      address.length
+    )}`
   }
 
   return (
     <Box className={styles.header} backgroundColor={'#222'} px={5} py={2}>
       <Flex alignItems={'center'} justifyContent={'space-between'}>
         <Image src='/img/regy.png' alt='regy' width={150} />
-        <Button size={'sm'} colorScheme='yellow' onClick={connectWallet}>
-          {address ? shortenWalletAddress(address) : 'Connect'}
+        <Button
+          size={'sm'}
+          colorScheme='yellow'
+          onClick={connectWallet}
+          border={'2px solid #222'}
+          boxShadow={'0 3px 10px #222'}
+        >
+          {address ? shortenWalletAddress(address) : 'Conectar'}
         </Button>
       </Flex>
     </Box>
