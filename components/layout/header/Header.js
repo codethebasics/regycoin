@@ -13,7 +13,11 @@ export default function Header() {
     const fetchWeb3Info = async () => {
       if (window.ethereum) {
         setAddress(await Web3Service.getConnectedAddress())
-        Web3Service.listenNetworkChange()
+        await Web3Service.listenNetworkChange()
+        Web3Service.listenDisconnect()
+        Web3Service.listenAccountChange(accounts => {
+          setAddress(accounts[0])
+        })
       }
     }
     fetchWeb3Info()

@@ -59,9 +59,37 @@ export const signMessage = async message => {
   return await getSigner().signMessage(message)
 }
 
+/**
+ *
+ * Listen network change event
+ *
+ */
 export const listenNetworkChange = async () => {
   getProvider().on('network', (newNetwork, oldNetwork) => {
     if (oldNetwork) {
+      window.location.reload()
+    }
+  })
+}
+
+/**
+ *
+ * Listen account change event
+ *
+ * @param {function} callback function
+ */
+export const listenAccountChange = async callback => {
+  window.ethereum.on('accountsChanged', callback)
+}
+
+/**
+ *
+ * Listen disconnect event
+ *
+ */
+export const listenDisconnect = async () => {
+  window.ethereum.on('accountsChanged', accounts => {
+    if (!accounts.length) {
       window.location.reload()
     }
   })
